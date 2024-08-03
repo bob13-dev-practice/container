@@ -1,0 +1,37 @@
+version: "3.0"
+
+services:
+  my-web:
+    image: nginx
+    ports:
+      - 8000:8000
+    volumes:
+      - ./bob_nginx.conf:/etc/nginx/conf.d/default.conf
+
+  app_green:
+    image: myflask:2.2
+    ports:
+      - 8001:5000
+    environment:
+      - APP_COLOR=green
+
+  app_orange:
+    image: myflask:2.2
+    ports:
+      - 8002:5000
+    environment:
+      - APP_COLOR=orange
+
+  app_red:
+    image: myflask:2.2
+    ports:
+      - 8003:5000
+    environment:
+      - APP_COLOR=red
+
+  app_cyan:
+    image: myflask:2.2
+    ports:
+      - 8004:5000
+    environment:
+      - APP_COLOR=cyan
